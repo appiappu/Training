@@ -1,0 +1,226 @@
+What is static keyword in java?
+-->The static keyword in Java is used for memory management mainly. We can apply static keyword with variables, 
+methods, blocks and nested classes. The static keyword belongs to the class than an instance of the class.
+-->If you declare any variable as static, it is known as a static variable.
+-->The static variable can be used to refer to the common property of all objects (which is not unique for each object), 
+for example, the company name of employees, college name of students, etc.
+-->The static variable gets memory only once in the class area at the time of class loading.
+-->Suppose there are 500 students in my college, now all instance data members will get memory each time when the object is created. 
+All students have its unique rollno and name, so instance data member is good in such case. Here, "college" refers to the common property of all objects.
+If we make it static, this field will get the memory only once.
+class Student{  
+   int rollno;//instance variable  
+   String name;  
+   static String college ="ITS";//static variable  
+   //constructor  
+   Student(int r, String n){  
+   rollno = r;  
+   name = n;  
+   }  
+   //method to display the values  
+   void display (){System.out.println(rollno+" "+name+" "+college);}  
+}  
+//Test class to show the values of objects  
+public class TestStaticVariable1{  
+ public static void main(String args[]){  
+ Student s1 = new Student(111,"Karan");  
+ Student s2 = new Student(222,"Aryan");  
+ //we can change the college of all objects by the single line of code  
+ //Student.college="BBDIT";  
+ s1.display();  
+ s2.display();  
+ }  
+}  
+Output:
+
+111 Karan ITS
+222 Aryan ITS
+what are instance variables?
+-->Instance variables are declared in a class, but outside a method, constructor or any block.
+-->When space is allocated for an object in the heap, a slot for each instance variable value is created.
+
+-->Instance variables are created when an object is created with the use of the keyword 'new' and destroyed when the object is destroyed.
+
+-->Instance variables hold values that must be referenced by more than one method, constructor or block, or essential parts of an object's 
+state that must be present throughout the class.
+
+-->Instance variables can be declared at the class level before or after use.
+
+-->Access modifiers can be given for instance variables.
+-->Instance variables have default values. For numbers, the default value is 0, for Booleans it is false, and for object references it is null.
+Values can be assigned during the declaration or within the constructor.
+import java.io.*;
+public class Employee {
+
+   // this instance variable is visible for any child class.
+   public String name;
+
+   // salary variable is visible in Employee class only.
+   private double salary;
+
+   // The name variable is assigned in the constructor.
+   public Employee (String empName) {
+      name = empName;
+   }
+
+   // The salary variable is assigned a value.
+   public void setSalary(double empSal) {
+      salary = empSal;
+   }
+
+   // This method prints the employee details.
+   public void printEmp() {
+      System.out.println("name  : " + name );
+      System.out.println("salary :" + salary);
+   }
+
+   public static void main(String args[]) {
+      Employee empOne = new Employee("Ransika");
+      empOne.setSalary(1000);
+      empOne.printEmp();
+   }
+}
+what are Constructors in Java?
+In Java
+-->a constructor is a block of codes similar to the method. It is called when an instance of the class
+is created. At the time of calling constructor, memory for the object is allocated in the memory.
+
+-->It is a special type of method which is used to initialize the object.
+
+-->Every time an object is created using the new() keyword, at least one constructor is called.
+
+-->It calls a default constructor if there is no constructor available in the class. In such case, Java compiler provides a default constructor by default.
+-->There are two types of constructors in Java: no-arg constructor, and parameterized constructor.
+
+Rules for creating Java constructor
+There are two rules defined for the constructor.
+
+Constructor name must be the same as its class name
+A Constructor must have no explicit return type
+A Java constructor cannot be abstract, static, final, and synchronized
+Example of default constructor
+//Java Program to create and call a default constructor  
+class Bike1{  
+//creating a default constructor  
+Bike1(){System.out.println("Bike is created");}  
+//main method  
+public static void main(String args[]){  
+//calling a default constructor  
+Bike1 b=new Bike1();  
+}  
+} 
+Output:
+
+Bike is created.
+Example of default constructor that displays the default values
+//Let us see another example of default constructor  
+//which displays the default values  
+class Student3{  
+int id;  
+String name;  
+//method to display the value of id and name  
+void display(){System.out.println(id+" "+name);}  
+  
+public static void main(String args[]){  
+//creating objects  
+Student3 s1=new Student3();  
+Student3 s2=new Student3();  
+//displaying values of the object  
+s1.display();  
+s2.display();  
+}  
+} 
+Output:
+
+0 null
+0 null
+Explanation:In the above class,you are not creating any constructor so compiler provides you a default constructor. 
+Here 0 and null values are provided by default constructor.
+
+Java Parameterized Constructor
+A constructor which has a specific number of parameters is called a parameterized constructor.
+
+Why use the parameterized constructor?
+The parameterized constructor is used to provide different values to distinct objects. However, you can provide the same values also.
+Example of parameterized constructor
+In this example, we have created the constructor of Student class that have two parameters. We can have any number of parameters in the constructor.
+
+//Java Program to demonstrate the use of the parameterized constructor.  
+class Student4{  
+    int id;  
+    String name;  
+    //creating a parameterized constructor  
+    Student4(int i,String n){  
+    id = i;  
+    name = n;  
+    }  
+    //method to display the values  
+    void display(){System.out.println(id+" "+name);}  
+   
+    public static void main(String args[]){  
+    //creating objects and passing values  
+    Student4 s1 = new Student4(111,"Karan");  
+    Student4 s2 = new Student4(222,"Aryan");  
+    //calling method to display the values of object  
+    s1.display();  
+    s2.display();  
+   }  
+} 
+Output:
+
+111 Karan
+222 Aryan
+-----------------------------------------------------
+What causes out of memory error in Java?
+OutOfMemoryError is a runtime error in Java which occurs when the Java Virtual Machine (JVM) is unable to allocate an object due to insufficient 
+space in the Java heap. ... This error can also be thrown when the native memory is insufficient to support the loading of a Java class.
+
+what is memory leak in java how to avoid it?
+Using the java. lang. ref package, you can work with the garbage collector in your program. This allows you to avoid directly referencing 
+objects and use special reference objects that the garbage collector easily clears.
+
+What is the string pool?
+String pool is nothing but a storage area in Java heap where string literals stores. It is also known as String Intern Pool or String Constant Pool. 
+It is just like object allocation. By default, it is empty and privately maintained by the Java String class. Whenever we create a string the string 
+object occupies some space in the heap memory. Creating a number of strings may increase the cost and memory too which may reduce the performance also.
+Creating String in Java
+There are two ways to create a string in Java:
+
+Using String Literal
+String str1 = "Python";
+
+String str2 = "Data Science";
+
+String str3 = "Python";
+
+Using new Keyword
+In Java, a new keyword is also used to create String, as follows:
+
+String str1 = new String ("Java");
+
+String str2 = new String ("C++");
+
+String str3 = new String ("Data Science");
+public class StringPoolExample  
+{  
+public static void main(String[] args)   
+{  
+String s1 = "Java";  
+String s2 = "Java";  
+String s3 = new String("Java");  
+String s4 = new String("Java").intern();  
+System.out.println((s1 == s2)+", String are equal."); // true  
+System.out.println((s1 == s3)+", String are not equal."); // false  
+System.out.println((s1 == s4)+", String are equal."); // true  
+}  
+}  
+Output:
+
+Java String.intern() Method
+The String.intern() method puts the string in the String pool or refers to another String object from the string pool having the same value. 
+It returns a string from the pool if the string pool already contains a string equal to the String object. It determines the string by using 
+the String.equals(Object) method. If the string is not already existing, the String object is added to the pool, and a reference to this String object is returned.
+
+For any two strings say str1 and str2, str1.intern() = = str2.intern() will be true if and only if the statement str1.equals(str2) will be true.
+
+
