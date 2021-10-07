@@ -1,0 +1,68 @@
+equals() method
+
+-->When comparing two objects together, Java calls their equals() method which returns true if the two objects are equal,
+or false otherwise. Note that this comparison using equals()method is very different than using the == operator.
+-->The equals()method is designed to compare two objects semantically (by comparing the data members of the class), 
+whereas the == operator compares two objects technically (by comparing their references i.e. memory addresses).
+NOTE: The implementation of equals()method in the Object class compares references of two objects.
+That means we should override it in our classes for semantic comparison. Almost classes in the JDK override their 
+own version of equals()method, such as String, Date, Integer, Double, etc.
+
+
+A typical example is String comparison in Java. Let’s see the following code:
+
+String s1 = new String("This is a string");
+String s2 = new String("This is a string");
+ 
+boolean refEqual = (s1 == s2);
+boolean secEqual = (s1.equals(s2));
+ 
+System.out.println("s1 == s2: " + refEqual);
+System.out.println("s1.equals(s2): " + secEqual);
+
+output:
+s1 == s2: false
+s1.equals(s2): true
+
+
+hashCode()
+
+The hashCode() method of objects is used when you insert them into a HashTable, HashMap or HashSet.
+When inserting an object into a hastable you use a key. The hash code of this key is calculated, 
+and used to determine where to store the object internally. When you need to lookup an object in a 
+hashtable you also use a key. The hash code of this key is calculated and used to determine where to search
+for the object.
+
+Here are two rules that are good to know about implementing the hashCode() method in your own classes,
+if the hashtables in the Java Collections API are to work correctly:
+
+If object1 and object2 are equal according to their equals() method, they must also have the same hash code.
+If object1 and object2 have the same hash code, they do NOT have to be equal too.
+In shorter words:
+
+If equal, then same hash codes too.
+Same hash codes no guarantee of being equal.
+
+
+Here are two example implementation of the hashCode() method matching the equals() methods shown earlier:
+
+public class Employee {
+  protected long   employeeId;
+  protected String firstName;
+  protected String lastName;
+
+  public int hashCode(){
+    return (int) employeeId;
+  }
+}
+public class Employee {
+    protected long   employeeId;
+    protected String firstName;
+    protected String lastName;
+
+  public int hashCode(){
+    return (int) employeeId *
+                firstName.hashCode() *
+                lastName.hashCode();
+  }
+}
