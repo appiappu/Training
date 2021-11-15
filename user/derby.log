@@ -1,0 +1,16 @@
+----------------------------------------------------------------
+Sun Nov 14 15:18:25 IST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017d-1dd9-10f9-000006a5e478 
+on database directory memory:C:\Users\appia\Desktop\user\4f59e135-71fe-4de6-997e-32ad192a7c9a with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+Loaded from file:/C:/Users/appia/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_291-b10
+user.dir=C:\Users\appia\Desktop\user
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sun Nov 14 15:21:55 IST 2021:
+Shutting down instance a816c00e-017d-1dd9-10f9-000006a5e478 on database directory memory:C:\Users\appia\Desktop\user\4f59e135-71fe-4de6-997e-32ad192a7c9a with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
